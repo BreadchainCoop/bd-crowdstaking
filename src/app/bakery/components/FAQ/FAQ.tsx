@@ -66,7 +66,7 @@ function AccordionContent({ children }: { children: ReactNode }) {
 export default function FAQ() {
   return (
     <section className="pb-16 sm:pb-28">
-      <Accordion.Root
+      {/* <Accordion.Root
         type="single"
         className="flex flex-col gap-1 max-w-2xl m-auto px-2"
         collapsible
@@ -223,7 +223,7 @@ export default function FAQ() {
             </ol>
           </AccordionContent>
         </AccordionItem>
-      </Accordion.Root>
+      </Accordion.Root> */}
     </section>
   );
 }

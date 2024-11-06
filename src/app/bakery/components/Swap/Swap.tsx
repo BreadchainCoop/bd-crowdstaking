@@ -88,7 +88,7 @@ export function Swap() {
           <div className="w-full drop-shadow-swap">
             <div className="w-full px-4 pt-2">
               <h2 className="text-[1.5rem] md:text-[1.9rem] font-medium">
-                {swapState.mode === "BAKE" ? "Bake" : "Burn"}
+                {swapState.mode === "BAKE" ? "Mint" : "Burn"}
               </h2>
             </div>
             <div className="relative w-full p-2 flex flex-col gap-1">

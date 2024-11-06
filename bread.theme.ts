@@ -16,13 +16,13 @@ const colors = {
     grey100: "#181818",
   },
   breadpink: {
-    pink: "#FF99E2",
-    shaded: "#E873D3",
-    100: "#C463CA",
-    200: "#FF99E2",
-    300: "#E873D3",
-    400: "#A416AD",
-    500: "#D04EC5",
+    pink: "#f7102a",
+    shaded: "#ff5a6c",
+    100: "#f7102a",
+    200: "#f7102a",
+    300: "#f7102a",
+    400: "#f7102a",
+    500: "#f7102a",
   },
   status: {
     danger: "#D8745C",
@@ -31,10 +31,10 @@ const colors = {
     success: "#9EC958",
   },
   breadviolet: {
-    shaded: "#D04EC5",
-    violet: "#A416AD",
+    shaded: "#f7102a",
+    violet: "#f7102a",
   },
-  "button-border": "#2E2E2E",
+  "button-border": "#f7102a",
 };
 
 export const breadTheme = {

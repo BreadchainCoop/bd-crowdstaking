@@ -131,7 +131,7 @@ export default function Bake({
           write();
         }}
       >
-        Bake
+        Mint
       </Button>
     </div>
   );

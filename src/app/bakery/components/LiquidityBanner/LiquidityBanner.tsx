@@ -3,9 +3,9 @@ export function LiquidityBanner() {
     <div className="w-full max-w-[30rem] m-auto rounded-xl flex flex-col items-start md:flex-row md:items-center gap-4 p-4 bg-breadgray-ultra-white dark:bg-black relative overflow-hidden">
       <div className="grow grid grid-cols-1 gap-2 z-30">
         <span className="text-breadgray-grey300 dark:text-white text-2xl font-medium">
-          Grow the pool
+          Vouch for Projects
         </span>
-        <span>Earn while supporting $BREAD</span>
+        <span>Support Builders on Optimism</span>
       </div>
       <a
         href="https://curve.fi/#/xdai/pools/factory-stable-ng-15/deposit"
@@ -13,7 +13,7 @@ export function LiquidityBanner() {
         rel="noopener noreferrer"
         className="w-full md:w-auto px-4 py-2 rounded-xl text-center text-breadgray-charcoal dark:text-breadpink-shaded font-bold border-2 border-[#F7DDF2] dark:border-none z-30 backdrop-blur-md dark:bg-[#ED7BC7] dark:bg-opacity-20 hover:bg-breadviolet-shaded hover:text-breadgray-ultra-white transition-colors"
       >
-        Add liquidity
+        See projects
       </a>
       <div className="absolute w-full h-full left-0 top-0 bg-white dark:bg-black opacity-70 z-20" />
       <WaveOne />

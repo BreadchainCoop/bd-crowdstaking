@@ -14,8 +14,8 @@ const FAQ = dynamic(() => import("./bakery/components/FAQ/FAQ"), {
 });
 
 export const metadata: Metadata = {
-  title: "Bread Crowdstaking",
-  description: "Bake and burn BREAD. Fund post-capitalist web3.",
+  title: "Optimism Builder Dollar",
+  description: "Mint OBD. Support Builders on Optimism.",
 };
 
 export default function Home() {

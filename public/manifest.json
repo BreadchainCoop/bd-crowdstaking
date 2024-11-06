@@ -1,10 +1,10 @@
 {
   "name": "Bread Crowdstaking",
-  "description": "Bake and Burn BREAD",
-  "short_name": "Bread Crowdstaking",
+  "description": "Mint and Burn OBD",
+  "short_name": "Optimism Builder Dollar",
   "icons": [
     {
-      "src": "breadlogo_square.png",
+      "src": "obd-logo.png",
       "sizes": "any",
       "type": "image/png"
     }

@@ -45,9 +45,9 @@ export function FromPanel({
             handleInputChange={handleInputChange}
           />
           <TokenLabelContainer>
-            {swapMode === "BURN" ? <BreadIcon /> : <XDAIIcon />}
+            {swapMode === "BURN" ? "" : <XDAIIcon />}
             <TokenLabelText>
-              {swapMode === "BURN" ? "BREAD" : "xDAI"}
+              {swapMode === "BURN" ? "OBD" : "xDAI"}
             </TokenLabelText>
           </TokenLabelContainer>
         </PanelTokenRow>

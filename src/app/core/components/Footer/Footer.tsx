@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import type { ReactNode } from "react";
-import { LogoSVG } from "../Icons/Logo";
 import { WRAPPER_CLASSES } from "../../util/classes";
 import clsx from "clsx";
 import { MirrorIcon } from "../Icons/social";
@@ -22,17 +21,17 @@ export function Footer() {
         <div className="flex flex-col gap-1">
           <div className="flex gap-2 items-center justify-center lg:justify-start">
             <span className="w-6 h-6">
-              <LogoSVG />
+              <Image src="/obd-logo.png" alt="Logo" width={200} height={100} />
             </span>
-            <span className="text-xl font-bold">Breadchain</span>
+            <span className="text-xl font-bold">Optimism Builder Dollar</span>
           </div>
           <span className="text-breadgray-grey100 dark:text-breadgray-grey">
-            Funding post-capitalism
+            Supporting Builders on Optimism
           </span>
         </div>
         {/* navigation */}
         <nav className="flex flex-col gap-6 lg:flex-row items-center">
-          <div className="flex items-center justify-center gap-6 lg:gap-4 w-full lg:w-auto">
+          {/* <div className="flex items-center justify-center gap-6 lg:gap-4 w-full lg:w-auto">
             <FooterLink
               href="https://twitter.com/breadchain_"
               className="text-breadgray-grey100 dark:text-breadgray-ultra-white"
@@ -103,7 +102,7 @@ export function Footer() {
             <span className="text-breadpink-shaded">
               <LinkIcon />
             </span>
-          </a>
+          </a> */}
         </nav>
         {/* copyright */}
         <span className="text-breadgray-grey100 dark:text-breadgray-grey">
