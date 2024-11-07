@@ -22,7 +22,7 @@ function httpGetcharm(url: string): Promise<string> {
     });
   }
   
-  async function getProjectContentcharm(initialUrl: string): Promise<string[]> {
+  async function getProjectContentcharm(initialUrl: string): Promise<string> {
     try {
       // First curl to get the redirect URL
       const firstResponse = await httpGetcharm(initialUrl);
@@ -36,13 +36,13 @@ function httpGetcharm(url: string): Promise<string> {
       
       // Extract all content matches after content=
       const contentMatch = secondResponse.match(/og:title\" content="([^"]+)"/g)!;
-      const contents = contentMatch.map(match => match[1]);
-      if (!contents.length) throw new Error('Could not find any content matches');
-      
-      return contents;
+      if (!contentMatch || contentMatch.length === 0) return [''];
+      const firstMatch = contentMatch[0];
+      const contentValue = firstMatch.match(/content="([^"]+)"/)?.[1] || '';      
+      return contentValue;
     } catch (error) {
       console.error('Error fetching project content:', error);
-      return [''];
+      return '';
     }
   }
   

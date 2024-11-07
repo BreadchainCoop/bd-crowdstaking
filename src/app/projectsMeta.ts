@@ -1,4 +1,13 @@
 import { Hex } from "viem";
+const https = require('https');
+import { EAS, Offchain, SchemaEncoder, SchemaRegistry } from '@ethereum-attestation-service/eas-sdk';
+import { ethers } from 'ethers';
+import dotenv from 'dotenv';
+dotenv.config();
+export const EASContractAddress = '0x4200000000000000000000000000000000000021'; // Sepolia v0.26
+const eas = new EAS(EASContractAddress);
+const provider = new ethers.AlchemyProvider('optimism',process.env.NEXT_PUBLIC_ALCHEMY_MAINNET_API_KEY!)
+eas.connect(provider);
 
 export type ProjectMeta = {
   name: string;
@@ -92,10 +101,66 @@ type AttestationField = {
     value: string;
   };
 };
+function httpGetcharm(url: string): Promise<Record<string, string>> {
+  return new Promise((resolve, reject) => {
+    https.get(url, (resp: any) => {
+      let data = '';
+      resp.on('data', (chunk: string) => { data += chunk; });
+      resp.on('end', () => { 
+        try {
+          resolve({
+            ...JSON.parse(data),
+          });
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }).on("error", (err: Error) => {
+      reject(err);
+    });
+  });
+}
 
-export const attestationsList = projectsData.attestations.map((attestation: {decodedDataJson: string})  => {
-  return parseAttestationData(attestation.decodedDataJson);
+async function getProjectContentcharm(initialUrl: string): Promise<string> {
+  try {
+    // First curl to get the redirect URL
+    const firstResponse = await httpGetcharm(initialUrl);
+    
+    // Extract the relative path
+    
+    // Construct full URL and make second request
+    const fullUrl = `https://app.charmverse.io${firstResponse}`;
+    const secondResponse = await httpGetcharm(fullUrl);
+    
+    // Extract all content matches after content=
+    const contentMatch = secondResponse.match(/og:title\" content="([^"]+)"/g)!;
+    const firstMatch = contentMatch[0];
+    const contentValue = firstMatch.match(/content="([^"]+)"/)?.[1] || '';      
+    return contentValue;
+  } catch (error) {
+    console.error('Error fetching project content:', error);
+    return '';
+  }
+}
+
+
+const attestationsListRaw = projectsData.attestations.map((attestation: {decodedDataJson: string})  => {
+  return {
+    ...parseAttestationData(attestation.decodedDataJson),
+  };
 });
+
+ const attestationsListprocessed = await Promise.all(attestationsListRaw.map(async (attestation: Record<string, string>) => {
+  return {
+    ...attestation,
+    ProjectName: await httpGetcharm(attestation['metadataPtr'])
+  };
+}));
+export const attestationsList = await Promise.all(
+  attestationsListprocessed
+    .filter(attestation => !attestation.name.includes(':')).filter( attestation => !attestation.name.includes('test')).filter(  attestation => !attestation.name.includes('meb') ).filter(attestation => attestation.ProjectName.bio !== '')
+);
+
 console.log(attestationsList);
 
 function parseAttestationData(decodedDataJson: string): Record<string, string> {
