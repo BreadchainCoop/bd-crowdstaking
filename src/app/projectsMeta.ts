@@ -79,3 +79,40 @@ export const projectsMeta: {
     },
   },
 };
+
+const fs = require('fs');
+const projectsData = JSON.parse(fs.readFileSync('./src/projects.json', 'utf8'));
+type AttestationField = {
+  name: string;
+  type: string;
+  signature: string;
+  value: {
+    name: string;
+    type: string;
+    value: string;
+  };
+};
+
+export const attestationsList = projectsData.attestations.map((attestation: {decodedDataJson: string})  => {
+  return parseAttestationData(attestation.decodedDataJson);
+});
+console.log(attestationsList);
+
+function parseAttestationData(decodedDataJson: string): Record<string, string> {
+  try {
+    // Parse the JSON string into an array of fields
+    const fields = JSON.parse(decodedDataJson) as AttestationField[];
+    
+    // Convert the array into a dictionary of name: value pairs
+    return fields.reduce((acc, field) => ({
+      ...acc,
+      [field.name]: field.value.value
+    }), {});
+  } catch (e) {
+    console.error('Error parsing attestation data:', e);
+    return {};
+  }
+}
+
+// export const projectsMeta =
+
