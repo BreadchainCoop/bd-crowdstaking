@@ -48,21 +48,13 @@ function DesktopNavigation({ currentPath }: { currentPath: string }) {
       className="hidden flex-grow items-center gap-2 pl-6 md:flex lg:gap-0 lg:pl-12"
     >
       <DesktopNavigationLink isCurrentPage={currentPath === "/"} href="/">
-        Bake
+        Mint
       </DesktopNavigationLink>
-      {features.governancePage === true && (
-        <DesktopNavigationLink
-          isCurrentPage={currentPath === "/governance"}
-          href="/governance"
-        >
-          Governance
-        </DesktopNavigationLink>
-      )}
       <DesktopNavigationLink
-        href="https://breadchain.notion.site/4d496b311b984bd9841ef9c192b9c1c7?v=2eb1762e6b83440f8b0556c9917f86ca"
-        isExternal
+        isCurrentPage={currentPath === "/projects"}
+        href="/projects"
       >
-        Docs
+        Projects
       </DesktopNavigationLink>
     </nav>
   );

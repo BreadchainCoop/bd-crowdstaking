@@ -8,9 +8,7 @@ export function LiquidityBanner() {
         <span>Support Builders on Optimism</span>
       </div>
       <a
-        href="https://curve.fi/#/xdai/pools/factory-stable-ng-15/deposit"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/projects"
         className="w-full md:w-auto px-4 py-2 rounded-xl text-center text-breadgray-charcoal dark:text-breadpink-shaded font-bold border-2 border-[#F7DDF2] dark:border-none z-30 backdrop-blur-md dark:bg-[#ED7BC7] dark:bg-opacity-20 hover:bg-breadviolet-shaded hover:text-breadgray-ultra-white transition-colors"
       >
         See projects

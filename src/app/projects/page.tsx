@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   description: "Support these Optimism Builder Projects",
 };
 
+type EntryType = {
+  name: string;
+  value: {
+    value: string;
+  };
+};
+
+// Then in your function:
+
 export default function Projects() {
   const projectsData = projects.data.schema.attestations;
 
@@ -23,18 +32,21 @@ export default function Projects() {
               const decodedData = JSON.parse(attestation.decodedDataJson);
 
               // Extract specific fields
-              const name = decodedData.find((entry) => entry.name === "Name")
-                ?.value?.value;
+              const name = decodedData.find(
+                (entry: EntryType) => entry.name === "Name"
+              )?.value?.value;
               const organization = decodedData.find(
-                (entry) => entry.name === "Organization"
+                (entry: EntryType) => entry.name === "Organization"
               )?.value?.value;
               const description = decodedData.find(
-                (entry) => entry.name === "Description"
+                (entry: EntryType) => entry.name === "Description"
               )?.value?.value;
-              const url = decodedData.find((entry) => entry.name === "URL")
-                ?.value?.value;
-              const event = decodedData.find((entry) => entry.name === "Event")
-                ?.value?.value;
+              const url = decodedData.find(
+                (entry: EntryType) => entry.name === "URL"
+              )?.value?.value;
+              const event = decodedData.find(
+                (entry: EntryType) => entry.name === "Event"
+              )?.value?.value;
 
               return (
                 <div
